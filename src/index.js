@@ -1,3 +1,6 @@
 import './index.less'
-import './bileşenler/haber/haberler.js'
-import './bileşenler/menu/menu.js'
+import {haberYapici} from './bileşenler/haber/haberler.js'
+import {menuYapici} from './bileşenler/menu/menu.js'
+
+haberYapici('.header')
+menuYapici('.header')
