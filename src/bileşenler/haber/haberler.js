@@ -118,36 +118,44 @@ const data = [
 
 const haberYapici = (data) => {
 
-  const divArticle = document.createElement("div");
-  divArticle.classList.add("article");
-  for(let i of data){ element => {
-       const divH2 = document.createElement("h2");
-      divH2.textContent = element.baslik;
+      const divArticle = document.createElement("div");
+      divArticle.classList.add("article");
+      
+      const divH2 = document.createElement("h2");
+      divH2.textContent = data.baslik;
       divArticle.appendChild(divH2);
-       const p1 = document.createElement("p");
+      
+      const p1 = document.createElement("p");
       p1.classList.add("tarih");
-      p1.textContent = element.tarih;
+      p1.textContent = data.tarih;
       divArticle.appendChild(p1);
-       const p2 = document.createElement("p");
-      p2.textContent = element.ilkParagraf;
+      
+      const p2 = document.createElement("p");
+      p2.textContent = data.ilkParagraf;
       divArticle.appendChild(p2);
-       const p3 = document.createElement("p");
-      p3.textContent = element.ikinciParagraf;
+      
+      const p3 = document.createElement("p");
+      p3.textContent = data.ikinciParagraf;
       divArticle.appendChild(p3);
-       const p4 = document.createElement("p");
-      p4.textContent = element.ucuncuParagraf;
+      
+      const p4 = document.createElement("p");
+      p4.textContent = data.ucuncuParagraf;
       divArticle.appendChild(p4);
+      
       const button = document.createElement("button");
       button.classList.add("expandButton");
       button.textContent = "+";
+      button.addEventListener("click", (event) => {
+        event.target.parentElement.classList.toggle("article-open");
+      });
       divArticle.appendChild(button);
-    }}
+    
 
 return divArticle;
 
 }
 
-let divArticles = document.querySelector(".articles");
-divArticles.appendChild(divArticle);
+data.forEach((data) => {
+  document.querySelector(".articles").append(haberYapici(data));
+})
 
-export{haberYapici}

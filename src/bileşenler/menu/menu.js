@@ -38,16 +38,24 @@ let menuElemanlari = [
 const menuYapici = (menuElemanlari) => {
   const divMenu = document.createElement("div");
   divMenu.classList.add("menu");
+
   const divUl = document.createElement("ul");
-  divMenu.appendChild(divUl);
-  for(let i of menuElemanlari){element => {
+  
+  menuElemanlari.forEach (element => {
     let li = document.createElement("li");
     li.textContent = element;
     divUl.appendChild(li);
-  }}
+  });
+  document.querySelector(".menu-button").addEventListener("click", () =>{
+    document.querySelector(".menu").classList.toggle("menu--open")
+  })
+
+
+  divMenu.appendChild(divUl);
 
   return divMenu;
   
 }
 
-export {menuYapici}
+document.querySelector(".header").appendChild(menuYapici(menuElemanlari));
+
